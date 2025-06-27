@@ -121,7 +121,7 @@ temp/
 *.pkl
 *.pt
 *.pth
-models/
+# models/ <- ❌ removed this line
 
 # API Keys and secrets (additional security)
 config/secrets.js
