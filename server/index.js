@@ -23,10 +23,18 @@ app.get('/', async (req, res) => {
 
 const startServer = async () => {
   try {
-    connectDB(process.env.MONGODB_URL);
-    app.listen(8080, () => console.log('Server started on port 8080'));
+    // Connect to MongoDB first
+    await connectDB(process.env.MONGODB_URL);
+    
+    // Start server only after DB connection
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, () => {
+      console.log(`🚀 Server started on port ${PORT}`);
+      console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    });
   } catch (error) {
-    console.log(error);
+    console.error('❌ Server startup failed:', error);
+    process.exit(1);
   }
 };
 
