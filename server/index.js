@@ -9,7 +9,20 @@ import dalleRoutes from './routes/dalleRoutes.js';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// CORS configuration for production
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173', 
+    'https://art-mind-ai-image-generator.vercel.app',
+    'https://artmind-ai-image-generator.onrender.com'
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 
 app.use('/api/v1/post', postRoutes);
