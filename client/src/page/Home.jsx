@@ -30,7 +30,7 @@ const Home = () => {
   const fetchPosts = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://ai-art-oqkg.onrender.com/api/v1/post', {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_URL || 'http://localhost:8080'}/api/v1/post`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
