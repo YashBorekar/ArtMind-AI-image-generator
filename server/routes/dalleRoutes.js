@@ -13,7 +13,7 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const client = new HfInference(process.env.HUGGING_FACE_API_KEY);
+const client = new HfInference(process.env.HF_TOKEN);
 
 
 
